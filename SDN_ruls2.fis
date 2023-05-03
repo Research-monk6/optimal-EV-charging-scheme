@@ -1,0 +1,50 @@
+[System]
+Name='SDN_ruls2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Waiting_Time'
+Range=[0 4]
+NumMFs=3
+MF1='S':'trimf',[-1.667 0 1.667]
+MF2='M':'trimf',[0.3333 2 3.667]
+MF3='H':'trimf',[2.333 4 5.667]
+
+[Input2]
+Name='Traveling_time'
+Range=[0 0.6]
+NumMFs=3
+MF1='S':'trimf',[-0.25 0 0.2501]
+MF2='M':'trimf',[0.04995 0.3 0.55]
+MF3='H':'trimf',[0.35 0.6 0.8501]
+
+[Output1]
+Name='weight'
+Range=[0 1]
+NumMFs=6
+MF1='VS':'trimf',[-0.2 3.469e-18 0.2]
+MF2='S':'trimf',[0.0021141649048626 0.202114164904863 0.402114164904863]
+MF3='LM':'trimf',[0.2 0.4 0.6]
+MF4='HM':'trimf',[0.4 0.6 0.8]
+MF5='H':'trimf',[0.6 0.8 1]
+MF6='VH':'trimf',[0.8 1 1.2]
+
+[Rules]
+1 1, 6 (1) : 1
+1 2, 5 (1) : 1
+1 3, 4 (1) : 1
+2 1, 5 (1) : 1
+2 2, 4 (1) : 1
+2 3, 1 (1) : 1
+3 1, 4 (1) : 1
+3 2, 3 (1) : 1
+3 3, 1 (1) : 1
